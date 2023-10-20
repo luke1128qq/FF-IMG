@@ -72,7 +72,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '繪圖部件測試',
+                          '部件測試',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
