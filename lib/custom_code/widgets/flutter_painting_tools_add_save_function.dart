@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 // Automatic FlutterFlow importsRenderRepaintBoundaryB
 
-import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:flutter_painting_tools/flutter_painting_tools.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:ui' as ui; // 导入 ui 包
@@ -48,24 +47,6 @@ class _FlutterPaintingToolsAddSaveFunctionState
     super.dispose();
   }
 
-  void saveImage() async {
-    RenderRepaintBoundary boundary =
-        _boardKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
-
-    ui.Image image = await boundary.toImage(pixelRatio: 3.0);
-    ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-
-    Uint8List uint8List = byteData!.buffer.asUint8List();
-
-    final result = await ImageGallerySaver.saveImage(uint8List);
-
-    if (result != null && result.isNotEmpty) {
-      print('Image saved successfully at: $result');
-    } else {
-      print('Image not saved.');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,10 +60,6 @@ class _FlutterPaintingToolsAddSaveFunctionState
           IconButton(
             onPressed: () => controller.deletePainting(),
             icon: const Icon(Icons.delete),
-          ),
-          IconButton(
-            onPressed: saveImage,
-            icon: const Icon(Icons.save),
           ),
         ],
       ),

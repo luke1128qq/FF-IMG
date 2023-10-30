@@ -25,6 +25,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -72,7 +74,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          '部件測試',
+                          '繪圖部件測試',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Readex Pro',
@@ -83,17 +85,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 800.0,
-                    child: custom_widgets.FlutterPaintingToolsAddSaveFunction(
-                      width: double.infinity,
-                      height: 800.0,
-                      url:
-                          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/153.png',
-                    ),
+                Container(
+                  width: 800.0,
+                  height: 600.0,
+                  child: custom_widgets.Drawingboard(
+                    width: 800.0,
+                    height: 600.0,
+                    url: 'https://cataas.com/cat',
                   ),
                 ),
               ],
